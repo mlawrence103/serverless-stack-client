@@ -1,7 +1,9 @@
 export default {
+MAX_ATTACHMENT_SIZE: 5000000,
+STRIPE_KEY: "pk_test_51HLXfoIiRk0GYIsbYq8T9mWmlsldrGVBaIGE24Rxbst9lqRapg4WN7F3YlewOPg7CA9e4ChC7d72yzIxkNzrnMzi004StJGjgW",
   s3: {
     REGION: "us-east-2",
-    BUCKET: "notes-application-attachments"
+    BUCKET: "notes-application-attachment"
   },
   apiGateway: {
     REGION: "us-east-2",
