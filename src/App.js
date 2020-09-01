@@ -24,7 +24,7 @@ async function onLoad() {
   }
   catch(e) {
     if (e !== 'No current user') {
-      alert(e);
+      onError(e);
     }
   }
 
