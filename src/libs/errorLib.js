@@ -7,13 +7,7 @@ export function initSentry() {
     return;
   }
 
-  Sentry.init({
-    dsn: "https://2bfbf1ba63d647979bdac8af68f81f21@o442687.ingest.sentry.io/5415106",
-    integrations: [
-      new Integrations.BrowserTracing(),
-    ],
-    tracesSampleRate: 1.0,
-  });
+  Sentry.init({ dsn: "https://2bfbf1ba63d647979bdac8af68f81f21@o442687.ingest.sentry.io/5415106" });
 }
 
 export function logError(error, errorInfo = null) {
