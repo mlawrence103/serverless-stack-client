@@ -6,7 +6,7 @@ const dev = {
   },
   apiGateway: {
     REGION: "us-east-2",
-    URL: "https://dii8arxpwc.execute-api.us-east-2.amazonaws.com/dev"
+    URL: "https://dii8arxpwc.execute-api.us-east-2.amazonaws.com/dev/notes"
   },
   cognito: {
     REGION: "us-east-2",
@@ -24,7 +24,7 @@ const prod = {
   },
   apiGateway: {
     REGION: "us-east-2",
-    URL: "https://n2ieijt4ik.execute-api.us-east-2.amazonaws.com/prod"
+    URL: "https://n2ieijt4ik.execute-api.us-east-2.amazonaws.com/prod/notes"
   },
   cognito: {
     REGION: "us-east-2",
