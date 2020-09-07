@@ -66,7 +66,7 @@ export default function Home() {
             Login
           </Link>
           <Link to="/signup" className="btn btn-success btn-lg">
-            Signup
+            Join Now
           </Link>
         </div>
       </div>
