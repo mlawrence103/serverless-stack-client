@@ -62,11 +62,11 @@ export default function Home() {
         <h1>Scratch</h1>
         <p>A simple note taking app</p>
         <div>
-          <Link to="/login" className="btn btn-outline-primary btn-lg">
+          <Link to="/login" className="btn btn-primary btn-lg">
             Login
           </Link>
-          <Link to="/signup" className="btn btn-outline-secondary btn-lg">
-            Singup
+          <Link to="/signup" className="btn btn-secondary btn-lg">
+            Signup
           </Link>
         </div>
       </div>
