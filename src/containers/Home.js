@@ -8,9 +8,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 
 function loadNotes() {
-  return API.put("notes", "/notes");
+  return API.get("notes", "/notes");
 }
-
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
