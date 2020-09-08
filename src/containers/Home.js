@@ -8,7 +8,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 
 function loadNotes() {
-  return API.get("notes", "/invalid_path");
+  return API.put("notes", "/notes");
 }
 
 
