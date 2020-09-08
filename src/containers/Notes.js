@@ -150,7 +150,7 @@ export default function Notes() {
             block
             type="submit"
             bsSize="large"
-            bsStyle="primary"
+            bsStyle="success"
             isLoading={isLoading}
             disabled={!validateForm()}
           >
