@@ -15,7 +15,7 @@ export default function Home() {
   const [notes, setNotes] = useState([]);
   const { isAuthenticated } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
-  const [isFavorite, setIsFavorite] = useState("");
+  // const [isFavorite, setIsFavorite] = useState("");
 
   useEffect(() => {
     async function onLoad() {
