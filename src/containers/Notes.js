@@ -16,6 +16,7 @@ export default function Notes() {
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false)
 
   useEffect(() => {
     function loadNote() {
@@ -25,14 +26,17 @@ export default function Notes() {
     async function onLoad() {
       try {
         const note = await loadNote();
-        const { content, attachment } = note;
+        const { content, attachment, isFavorite } = note;
 
         if (attachment) {
           note.attachmentURL = await Storage.vault.get(attachment);
         }
+        console.log('note content: '+note.content+' \n note is favorite: '+ note.isFavorite);
+        console.log('attachment: '+ attachment);
 
         setContent(content);
         setNote(note);
+        setIsFavorite(isFavorite);
       } catch (e) {
         onError(e);
       }
@@ -51,6 +55,13 @@ export default function Notes() {
 
   function handleFileChange(event) {
     file.current = event.target.files[0];
+  }
+
+  function handleFavorite(event){
+    const target = event.target;
+    setIsFavorite(!isFavorite);
+    if(target.checked){console.log('Box checked')}
+    else{console.log('Box not checked')}
   }
 
   function saveNote(note) {
@@ -81,7 +92,7 @@ export default function Notes() {
       }
 
       await saveNote({
-        content,
+        content, isFavorite,
         attachment: attachment || note.attachment
       });
       history.push("/");
@@ -119,6 +130,16 @@ export default function Notes() {
 
   return (
     <div className="Notes">
+      <FormGroup controlId="favorite">
+        <input
+            defaultChecked={isFavorite}
+            onChange={handleFavorite}
+            type="checkbox"
+            />
+        <ControlLabel>
+          <p>Favorite</p>
+        </ControlLabel>
+      </FormGroup>
       {note && (
         <form onSubmit={handleSubmit}>
           <FormGroup controlId="content">

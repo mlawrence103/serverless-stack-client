@@ -6,3 +6,12 @@
   height: 300px;
   font-size: 24px;
 }
+
+.NewNote form label{
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.NewNote form p{
+  padding-left: 10px;
+}

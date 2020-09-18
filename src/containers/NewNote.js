@@ -13,6 +13,7 @@ export default function NewNote() {
   const history = useHistory();
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false)
 
   function validateForm() {
     return content.length > 0;
@@ -20,6 +21,21 @@ export default function NewNote() {
 
   function handleFileChange(event) {
     file.current = event.target.files[0];
+  }
+
+  function handleFavorite(event){
+    const target = event.target;
+    setIsFavorite(!isFavorite);
+    if (target.checked){
+      console.log('Box is checked')
+    //   alert('You favorited this message');
+    //   setIsFavorite(true)
+    }
+    else{
+      console.log('Box is not checked')
+    //   alert('You are unfavoriting this message')
+    //   setIsFavorite(false);
+    }
   }
 
   async function handleSubmit(event) {
@@ -39,8 +55,10 @@ export default function NewNote() {
     try {
       const attachment = file.current ? await s3Upload(file.current) : null;
 
-      await createNote({ content, attachment });
+      await createNote({ content, attachment, isFavorite });
       history.push("/");
+      console.log('note is favorite: ' + isFavorite);
+      console.log('attachment: ' + attachment);
     } catch (e) {
       onError(e);
       setIsLoading(false);
@@ -49,6 +67,8 @@ export default function NewNote() {
 
 
   function createNote(note) {
+    console.log('here in NewNote');
+    console.log(note.isFavorite);
     return API.post("notes", "/notes", {
       body: note
     });
@@ -57,6 +77,16 @@ export default function NewNote() {
   return (
     <div className="NewNote">
       <form onSubmit={handleSubmit}>
+        <FormGroup controlId="favorite">
+          <input
+            onChange={handleFavorite}
+            type="checkbox"
+            defaultChecked={isFavorite}
+            />
+          <ControlLabel>
+            <p>Favorite</p>
+          </ControlLabel>
+        </FormGroup>
         <FormGroup controlId="content">
           <FormControl
             value={content}
@@ -72,7 +102,7 @@ export default function NewNote() {
           block
           type="submit"
           bsSize="large"
-          bsStyle="primary"
+          bsStyle="success"
           isLoading={isLoading}
           disabled={!validateForm()}
         >
