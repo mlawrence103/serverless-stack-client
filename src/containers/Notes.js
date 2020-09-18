@@ -31,7 +31,8 @@ export default function Notes() {
         if (attachment) {
           note.attachmentURL = await Storage.vault.get(attachment);
         }
-        console.log('note content: '+note.content+' \n note is favorite: '+ note.isFavorite);
+        console.log('note content: '+content)
+        console.log('this note is favorite: '+ isFavorite);
         console.log('attachment: '+ attachment);
 
         setContent(content);
@@ -133,6 +134,7 @@ export default function Notes() {
       <FormGroup controlId="favorite">
         <input
             defaultChecked={isFavorite}
+            checked={isFavorite}
             onChange={handleFavorite}
             type="checkbox"
             />
