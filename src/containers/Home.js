@@ -15,7 +15,7 @@ export default function Home() {
   const [notes, setNotes] = useState([]);
   const { isAuthenticated } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
-  // const [isFavorite, setIsFavorite] = useState("");
+  const [isFavorite, setIsFavorite] = useState("");
 
   useEffect(() => {
     async function onLoad() {
@@ -42,6 +42,7 @@ export default function Home() {
         <LinkContainer key={note.noteId} to={`/notes/${note.noteId}`}>
           <ListGroupItem header={note.content.trim().split("\n")[0]}>
             {"Created: " + new Date(note.createdAt).toLocaleString()}
+            {note.isFavorite?<h3>Favorite</h3>:""}
           </ListGroupItem>
         </LinkContainer>
       ) : (
